@@ -4,13 +4,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+
+import org.hibernate.validator.constraints.Range;
+import org.springframework.validation.annotation.Validated;
 
 @Entity
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
+	@NotBlank
 	private String name;
+	@Range(min = 0)
+	private Integer age;
 
 	public String getName() {
 		return name;
@@ -26,6 +33,14 @@ public class User {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public Integer getAge() {
+		return age;
+	}
+
+	public void setAge(Integer age) {
+		this.age = age;
 	}
 
 }
