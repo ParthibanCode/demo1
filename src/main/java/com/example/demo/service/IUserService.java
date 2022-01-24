@@ -13,14 +13,21 @@ public class IUserService {
 
 	@Autowired
 	UserRepository userRepository;
+
 	public void saveUser(User user) {
 		userRepository.save(user);
 	}
+
 	public Iterable<User> getUsers() {
 		return userRepository.findAll();
 	}
+
 	public Optional<User> getUser(Integer id) {
 		return userRepository.findById(id);
+	}
+
+	public void deleteUser(Integer id) {
+		userRepository.deleteById(id);
 	}
 
 }
